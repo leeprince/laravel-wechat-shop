@@ -1,0 +1,27 @@
+{
+    "name": "leeprince/laravel-wechat-shop",
+    "description": "基于 laravel 开发的微信公众号商店组件",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "leeprince",
+            "email": "leeprince@foxmail.com"
+        }
+    ],
+    "require": {},
+    "replace": {
+        "leeprince/laravel-wechat-shop-member": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "LeePrince\\LaravelWechatShop\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LeePrince\\LaravelWechatShop\\Wap\\Member\\Providers\\MemberServiceProvider"
+            ]
+        }
+    }
+}
