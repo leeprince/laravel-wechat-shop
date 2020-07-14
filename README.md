@@ -1,6 +1,6 @@
 <h1 align="center"> laravel-wechat-shop </h1>
 
-<p align="center"> 基于 laravel 开发的微信公众号商店组件.</p>
+<p align="center"> 基于 laravel 开发微信公众号商城组件，并且包含各个模块的子组件</p>
 
 
 ## Installing
@@ -11,7 +11,9 @@ $ composer require leeprinnce/laravel-wechat-shop -vvv
 
 ## Usage
 
-TODO
+### 组件的发布命令, .包含数据库迁移及配置文件发布
+php artisan laravel-wechat-shop:install
+
 
 ## Contributing
 
