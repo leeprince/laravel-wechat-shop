@@ -21,7 +21,7 @@ class AuthorizationController extends Controller
         
         if (! $user) {
             // 存储为新用户
-            $create = User::create([
+            $user = User::create([
                'weixin_openid' => $wechatUser->id,
                'nickname' => $wechatUser->name??'',
                'image_head' => $wechatUser->avatar??''
@@ -29,10 +29,12 @@ class AuthorizationController extends Controller
         }
         
         // 更新用户状态为已登陆：auth
-        dump(Auth::check());
-        // Auth::login($user);
+        /*dump(Auth::check());
+        Auth::login($user);
+        dump(Auth::check());*/
+        dump(Auth::guard('prince-wap-member')->check());
         Auth::guard('prince-wap-member')->login($user);
-        dump(Auth::check());
+        dump(Auth::guard('prince-wap-member')->check());
         
         // 登陆后重定向
         return '已通过';
