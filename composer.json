@@ -1,6 +1,6 @@
 {
     "name": "leeprince/laravel-wechat-shop",
-    "description": "基于 laravel 开发的微信公众号商店组件",
+    "description": "基于 laravel 开发微信公众号商城组件，并且包含各个模块的子组件",
     "license": "MIT",
     "authors": [
         {
