@@ -69,6 +69,31 @@ class MemberServiceProvider extends ServiceProvider
     {
         // 将给定配置与现有配置合并。
         // 指定的 key = 配置的文件名。即可让配置文件合并到由 $this->publishes([__DIR__ . '/Config' => config_path()], $groups = null); 分配的由文件名组成的同一个组中
+        /**
+        "wap" => array:1 [▼
+          "member" => array:2 [▼
+            "wechat" => array:1 [▼
+              "official_account" => array:1 [▶]
+            ]
+            "auth" => array:4 [▼
+              "controller" => "LeePrince\LaravelWechatShop\Wap\Member\Http\Controllers\AuthorizationController"
+              "guard" => "member"
+              "guards" => array:1 [▼
+                "member" => array:2 [▼
+                  "driver" => "session"
+                  "provider" => "member"
+                ]
+              ]
+              "providers" => array:1 [▼
+                "member" => array:2 [▼
+                  "driver" => "eloquent"
+                  "model" => "LeePrince\LaravelWechatShop\Wap\Member\Models\User"
+                ]
+              ]
+            ]
+          ]
+        ]
+         */
         $this->mergeConfigFrom(__DIR__ . "/../Config/leeprince-member.php", 'wap.member');
     }
     
@@ -118,6 +143,7 @@ class MemberServiceProvider extends ServiceProvider
     private function loadAuthConfig()
     {
         config(Arr::dot(config('wap.member.auth', []), 'auth.'));
+        config(Arr::dot(config('wap.member.wechat', []), 'wechat.'));
     }
     
     /**
@@ -145,7 +171,7 @@ class MemberServiceProvider extends ServiceProvider
      */
     private function loadMigrations()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migration');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/migrations');
     }
     
     /**
