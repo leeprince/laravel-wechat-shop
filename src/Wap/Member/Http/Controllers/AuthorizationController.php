@@ -28,7 +28,7 @@ class AuthorizationController extends Controller
             ]);
         }
         
-        // 更新用户状态为已登陆：auth
+        // 更新用户状态为已登陆：auth， 通过看守者去改变用户登陆状态
         /*dump(Auth::check());
         Auth::login($user);
         dump(Auth::check());*/
