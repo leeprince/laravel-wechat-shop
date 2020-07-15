@@ -10,6 +10,7 @@ namespace LeePrince\LaravelWechatShop\Wap\Member\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use LeePrince\LaravelWechatShop\Wap\Member\Models\User;
+use LeePrince\LaravelWechatShop\Wap\Member\Facades\Member;
 
 class AuthorizationController extends Controller
 {
@@ -35,6 +36,8 @@ class AuthorizationController extends Controller
         dump(Auth::guard('prince-wap-member')->check());
         Auth::guard('prince-wap-member')->login($user);
         dump(Auth::guard('prince-wap-member')->check());
+        // Member 门面已实现守卫者工具用于替换以下 Auth::guard('prince-wap-member') 的写法
+        dump(Member::guard()->check());
         
         // 登陆后重定向
         return '已通过';

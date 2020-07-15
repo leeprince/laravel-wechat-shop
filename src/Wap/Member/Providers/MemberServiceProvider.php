@@ -32,6 +32,7 @@ class MemberServiceProvider extends ServiceProvider
      * 自定义 Artisan 命令，包含以下功能
      *      1. 执行数据库迁移功能：php artisan migrate(同样数据填充一样可以包含)
      *      2. 发布配置文件
+     * 注意命名空间最前面含有 \
      */
     private $commands = [
         \LeePrince\LaravelWechatShop\Wap\Member\Console\commands\InstallCommand::class,
@@ -158,7 +159,11 @@ class MemberServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             /**
              * 注册要由 publish 命令发布的路径，可以发布配置文件到指定目录;
-             *      config_path()不填就是默认的地址 config_path 的路径 发布配置文件名不会改变
+             *      config_path()
+             *          1. 不填就是默认的地址 config_path 的路径, 发布配置文件名不会改变;
+             *          2. 不带后缀就是一个文件夹
+             *          3. 如果是一个后缀就是一个文件
+             *      publishes() 的第二个参数是这个配置文件的标识，可以为null或者任意字符
              */
             $this->publishes([__DIR__ . '/../Config' => config_path()], null);
         }
