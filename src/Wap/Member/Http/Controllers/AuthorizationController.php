@@ -14,7 +14,7 @@ use LeePrince\LaravelWechatShop\Wap\Member\Facades\Member;
 
 class AuthorizationController extends Controller
 {
-    public function wechatStore(Request $request)
+    public function wechatLogin(Request $request)
     {
         $wechatUser = session('wechat.oauth_user.default'); // 拿到授权用户资料
         $user = User::where('weixin_openid', $wechatUser->id)->first();

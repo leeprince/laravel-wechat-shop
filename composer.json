@@ -8,9 +8,12 @@
             "email": "leeprince@foxmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "overtrue/laravel-wechat": "~5.0"
+    },
     "replace": {
-        "leeprince/laravel-wechat-shop-member": "self.version"
+        "leeprince/laravel-wechat-shop-member": "self.version",
+        "leeprince/laravel-wechat-shop-shop": "self.version"
     },
     "autoload": {
         "psr-4": {
@@ -20,7 +23,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "LeePrince\\LaravelWechatShop\\Wap\\Member\\Providers\\MemberServiceProvider"
+                "LeePrince\\LaravelWechatShop\\Wap\\Member\\Providers\\MemberServiceProvider",
+                "LeePrince\\LaravelWechatShop\\Wap\\Shop\\Providers\\ShopServiceProvider"
             ]
         }
     }

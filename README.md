@@ -12,7 +12,7 @@ $ composer require leeprinnce/laravel-wechat-shop -vvv
 ## 使用说明
 $ php artisan list （可以看到命令说明）
 
-### 组件配置的命令, .包含数据库迁移及配置文件发布
+### 组件配置的命令, 包含数据库迁移及配置文件发布
 ```
 $ php artisan laravel-wechat-shop:install
 
