@@ -14,8 +14,21 @@ use Illuminate\Support\Facades\Auth;
 
 class Guard
 {
-    public function guard()
+    public static function guard()
     {
         return Auth::guard('prince-wap-member');
+    }
+    
+    /**
+     * [魔术方法]
+     *
+     * @Author  leeprince:2020-07-16 09:09
+     * @param $method
+     * @param $args
+     * @return mixed
+     */
+    public function __call($method, $args)
+    {
+        return $this->guard()->$method(...$args);
     }
 }

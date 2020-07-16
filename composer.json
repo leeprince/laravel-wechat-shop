@@ -13,9 +13,13 @@
     },
     "replace": {
         "leeprince/laravel-wechat-shop-member": "self.version",
-        "leeprince/laravel-wechat-shop-shop": "self.version"
+        "leeprince/laravel-wechat-shop-shop": "self.version",
+        "leeprince/laravel-wechat-shop-extend-artisan": "self.version"
     },
     "autoload": {
+        "files": [
+            "src/Wap/Shop/Support/helpers.php"
+        ],
         "psr-4": {
             "LeePrince\\LaravelWechatShop\\": "src"
         }
@@ -24,7 +28,8 @@
         "laravel": {
             "providers": [
                 "LeePrince\\LaravelWechatShop\\Wap\\Member\\Providers\\MemberServiceProvider",
-                "LeePrince\\LaravelWechatShop\\Wap\\Shop\\Providers\\ShopServiceProvider"
+                "LeePrince\\LaravelWechatShop\\Wap\\Shop\\Providers\\ShopServiceProvider",
+                "LeePrince\\LaravelWechatShop\\Extend\\Artisan\\ArtisanServiveProvider"
             ]
         }
     }

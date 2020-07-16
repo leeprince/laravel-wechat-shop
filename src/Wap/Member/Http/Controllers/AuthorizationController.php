@@ -36,8 +36,11 @@ class AuthorizationController extends Controller
         dump(Auth::guard('prince-wap-member')->check());
         Auth::guard('prince-wap-member')->login($user);
         dump(Auth::guard('prince-wap-member')->check());
-        // Member 门面已实现守卫者工具用于替换以下 Auth::guard('prince-wap-member') 的写法
+        
+        // Member 门面已实现守卫者工具， 用于替换以下 Auth::guard('prince-wap-member') 的写法
         dump(Member::guard()->check());
+        // 通过 Member 中的魔术方法实现 Member::check() 替换 Member::guard()->check(); 的写法
+        dump(Member::check());
         
         // 登陆后重定向
         return '已通过';

@@ -38,6 +38,11 @@ class MemberServiceProvider extends ServiceProvider
         \LeePrince\LaravelWechatShop\Wap\Member\Console\commands\InstallCommand::class,
     ];
     
+    /**
+     * [注册服务]
+     *
+     * @Author  leeprince:2020-07-16 22:29
+     */
     public function register()
     {
         // dump('这是的 laravel-wechat-shop-wap-member 服务提供者的 register 方法');

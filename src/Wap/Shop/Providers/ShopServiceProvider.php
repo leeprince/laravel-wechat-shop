@@ -100,7 +100,7 @@ class ShopServiceProvider extends ServiceProvider
     
     /**
      * [执行 vendor:publish 命令发布配置文件到指令目录，即可以发布配置文件到指定目录，达到允许外部修改配置文件信息的目的]
-     *      执行：php artisan vendor:publish --provider="LeePrince\LaravelWechatShop\Wap\Shop\Providers\MemberServiceProvider"
+     *      执行：php artisan vendor:publish --provider="LeePrince\LaravelWechatShop\Wap\Shop\Providers\ShopServiceProvider"
      *
      * @Author  leeprince:2020-03-25 00:43
      */
@@ -117,6 +117,7 @@ class ShopServiceProvider extends ServiceProvider
              *      publishes() 的第二个参数是这个配置文件的标识，可以为null或者任意字符
              */
             $this->publishes([__DIR__ . '/../Config' => config_path()], null);
+            $this->publishes([__DIR__ . '/../Resources/views/assets' => public_path('/vendor/leeprince/laravel-wechat-shop/')], null);
         }
     }
 }

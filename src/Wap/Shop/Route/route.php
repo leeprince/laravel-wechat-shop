@@ -13,5 +13,7 @@ Route::get('/', function () {
 })->middleware('wechat.oauth');
 Route::get('/menu', 'WechatMenuController@menu');
 Route::get('/config', function () {
+    
     dd(config());
 });
+Route::get('/index', 'IndexController@index');

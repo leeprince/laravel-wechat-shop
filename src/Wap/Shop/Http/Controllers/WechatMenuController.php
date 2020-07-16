@@ -9,6 +9,12 @@ namespace LeePrince\LaravelWechatShop\Wap\Shop\Http\Controllers;
 
 class WechatMenuController extends Controller
 {
+    /**
+     * [发布微信公众号菜单栏]
+     *
+     * @Author  leeprince:2020-07-16 11:12
+     * @return mixed
+     */
     public function menu()
     {
         $buttons = [
