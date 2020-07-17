@@ -53,4 +53,67 @@ trait TraitCommand
             ['name', InputArgument::REQUIRED, 'The name of the class'],
         ];
     }
+    
+    /**
+     * 替换给定存根的名称空间 - 引入组件的基类(如：Controller)
+     *
+     * @param  string  $stub
+     * @param  string  $name
+     * @return $this
+     */
+    protected function replaceNamespace(&$stub, $name)
+    {
+        $stub = str_replace(
+            ['DummyNamespace', 'DummyRootNamespace', 'NamespacedDummyUserModel'],
+            [$this->getNamespace($name), $this->rootNamespace().'\\'.$this->getPackageInputNamespace().'\\', $this->userProviderModel()],
+            $stub
+        );
+        
+        return $this;
+    }
+    
+    /**
+     * [获取子组件包的名称]
+     *
+     * @Author  leeprince:2020-07-16 23:56
+     * @return string
+     */
+    protected function getPackageInput()
+    {
+        return ltrim(trim($this->argument('package')), '/');
+    }
+    
+    /**
+     * [获取子组件包的名称 - 组件路径]
+     *
+     * @Author  leeprince:2020-07-16 23:56
+     * @return string
+     */
+    protected function getPackageInputPath()
+    {
+        return str_replace('\\', '/', $this->getPackageInput());
+    }
+    
+    /**
+     * [获取子组件包的名称 - 组件路径]
+     *
+     * @Author  leeprince:2020-07-16 23:56
+     * @return string
+     */
+    protected function getPackageInputNamespace()
+    {
+        return str_replace('/', '\\', $this->getPackageInput());
+    }
+    
+    /**
+     * [默认的命名空间]
+     *
+     * @Author  leeprince:2020-07-16 23:56
+     * @param $rootNamespace
+     * @return string
+     */
+    protected function getDefaultNamespace($rootNamespace)
+    {
+        return $rootNamespace.'\\'.$this->getPackageInputNamespace().$this->defaultNamespace;
+    }
 }

@@ -16,6 +16,7 @@ class ArtisanServiveProvider extends ServiceProvider
         \LeePrince\LaravelWechatShop\Extend\Artisan\Make\MakeClassCommand::class,
         \LeePrince\LaravelWechatShop\Extend\Artisan\Make\MakeControllerCommand::class,
         \LeePrince\LaravelWechatShop\Extend\Artisan\Make\MakeModelCommand::class,
+        \LeePrince\LaravelWechatShop\Extend\Artisan\Make\MakeMigrationCommand::class,
     ];
     
     public function register()

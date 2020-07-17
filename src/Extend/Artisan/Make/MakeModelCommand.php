@@ -4,9 +4,11 @@
  *
  * @Author  leeprince:2020-07-17 01:53
  */
+
 namespace LeePrince\LaravelWechatShop\Extend\Artisan\Make;
 
 use Illuminate\Foundation\Console\ModelMakeCommand;
+use Illuminate\Support\Str;
 
 class MakeModelCommand extends ModelMakeCommand
 {
@@ -25,33 +27,30 @@ class MakeModelCommand extends ModelMakeCommand
      *
      * @var string
      */
-    protected $name = 'make:LaravelWechatShopModel';
+    protected $name = 'prince-make:model';
     
-    protected $description = '创建 leeprince/laravel-wechat-shop composer 组件包中的模型：php artisan make:LaravelWechatShopController 子组件名 模型名(或者是带路径的模型名)';
+    protected $description = '创建 leeprince/laravel-wechat-shop composer 组件包中的模型：php artisan make:LaravelWechatShopController 子组件名 模型名(或者是带路径的模型名) [-m(为模型创建迁移文件)]';
     
-    
-    /**
-     * [默认的命名空间]
-     *
-     * @Author  leeprince:2020-07-16 23:56
-     * @param $rootNamespace
-     * @return string
-     */
-    protected function getDefaultNamespace($rootNamespace)
-    {
-        return $rootNamespace.'\\'.$this->getPackageInput();
-    }
+    protected $defaultNamespace = '\models';
     
     /**
-     * [获取子组件包的名称，即控制器该在哪个子组件包中创建控制器]
+     * [为模型创建迁移文件]
      *
-     * @Author  leeprince:2020-07-16 23:56
-     * @return string
+     * @Author  leeprince:2020-07-17 12:19
      */
-    protected function getPackageInput()
+    protected function createMigration()
     {
-        $packageName = trim($this->argument('package'));
-        $packageName = ltrim($packageName, '/');
-        return str_replace('/', '\\', $packageName);
+        dump('create--mi');
+        $table = Str::snake(Str::pluralStudly(class_basename($this->argument('name'))));
+        
+        if ($this->option('pivot')) {
+            $table = Str::singular($table);
+        }
+        
+        $this->call('prince-make:migration', [
+            'name'     => "create_{$table}_table",
+            '--create' => $table,
+            '--path'   => $this->getPackageInputPath()
+        ]);
     }
 }
