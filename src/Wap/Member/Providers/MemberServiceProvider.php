@@ -72,14 +72,21 @@ class MemberServiceProvider extends ServiceProvider
     }
     
     /**
-     * [注册配置文件]
+     * [注册配置文件。将给定配置与现有配置合并]
      *
      * @Author  leeprince:2020-07-14 13:07
      */
     private function registerConfigFile()
     {
-        // 将给定配置与现有配置合并。
-        // 指定的 key = 配置的文件名。即可让配置文件合并到由 $this->publishes([__DIR__ . '/Config' => config_path()], $groups = null); 分配的由文件名组成的同一个组中
+        /**
+         * 指定的 key = 配置的文件名。即可让配置文件合并到由 $this->publishes([__DIR__ . '/Config' => config_path()], $groups = null); 分配的由文件名组成的同一个组中；指定的 key != 配置的文件名时可以通过该键获取配置文件信息。
+         */
+        /**
+         * 即读取配置文件的方式有：
+         *     1. 通过 {文件名.配置项} 的方式
+         *     2. 通过 {mergeConfigFrom后key != 文件名的键.配置项} 的方式
+         *     3. 通过{Arr::dot()合并后的键.配置项}读取
+         */
         /**
         "wap" => array:1 [▼
           "member" => array:1 [▼
@@ -145,6 +152,7 @@ class MemberServiceProvider extends ServiceProvider
     
     /**
      * [加载用户模型守卫者配置信息到 laravel 项目中以供使用]
+     *     将 mergeConfigFrom 中合并
      *
      * @Author  leeprince:2020-07-14 13:29
      */
