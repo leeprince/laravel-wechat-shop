@@ -2,12 +2,12 @@
 
 namespace LeePrince\LaravelWechatShop\Extend\Artisan\Make;
 
-use Illuminate\Database\Console\Seeds\SeederMakeCommand as Commad;
+use Illuminate\Database\Console\Seeds\SeederMakeCommand;
 use Symfony\Component\Console\Input\InputArgument;
 
-class MakeSeederCommand extends Commad
+class MakeSeederCommand extends SeederMakeCommand
 {
-    use GeneratorCommand;
+    use TraitCommand;
 
     protected $name = 'prince-make:seeder';
 

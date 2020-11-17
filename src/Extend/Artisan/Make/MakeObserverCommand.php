@@ -2,10 +2,10 @@
 
 namespace ShineYork\LaravelShop\Extend\Artisan\Make;
 
-use Illuminate\Foundation\Console\ObserverMakeCommand as Commad;
+use Illuminate\Foundation\Console\ObserverMakeCommand;
 use Illuminate\Support\Str;
 
-class ObserverMakeCommand1 extends Commad
+class ObserverMakeCommand1 extends ObserverMakeCommand
 {
     use TraitCommand;
 
