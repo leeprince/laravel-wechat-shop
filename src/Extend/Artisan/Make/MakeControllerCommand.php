@@ -8,8 +8,6 @@
 namespace LeePrince\LaravelWechatShop\Extend\Artisan\Make;
 
 use Illuminate\Routing\Console\ControllerMakeCommand;
-use Symfony\Component\Console\Input\InputArgument;
-
 
 class MakeControllerCommand extends ControllerMakeCommand
 {

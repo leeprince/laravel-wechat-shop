@@ -1,15 +1,17 @@
 <?php
 
-namespace ShineYork\LaravelShop\Extend\Artisan\Make;
+namespace LeePrince\LaravelWechatShop\Extend\Artisan\Make;
 
 use Illuminate\Foundation\Console\ObserverMakeCommand;
 use Illuminate\Support\Str;
 
-class ObserverMakeCommand1 extends ObserverMakeCommand
+class MakeObserverCommand extends ObserverMakeCommand
 {
     use TraitCommand;
 
     protected $name = 'prince-make:observer';
+
+    protected $description = '创建 leeprince/laravel-wechat-shop composer 组件包中的模型观察者：php artisan prince-make:observer TraitCommand类中中定义的$this->packagePath的相对路径(即组件包的名称，如：Data/Goods) 观察者类名(或者是带路径的观察者类名)';
 
     protected $defaultNamespace = "\Observers";
 
@@ -17,7 +19,7 @@ class ObserverMakeCommand1 extends ObserverMakeCommand
     {
         $model = str_replace('/', '\\', $model);
 
-        $namespaceModel = $this->rootNamespace().'\\'.$this->getPackageInput().'\\'.'Models\\'.$model;
+        $namespaceModel = $this->rootNamespace() . '\\' . $this->getPackageInput() . '\\' . 'Models\\' . $model;
 
         if (Str::startsWith($model, '\\')) {
             $stub = str_replace('NamespacedDummyModel', trim($model, '\\'), $stub);
