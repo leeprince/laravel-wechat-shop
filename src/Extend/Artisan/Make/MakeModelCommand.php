@@ -40,7 +40,6 @@ class MakeModelCommand extends ModelMakeCommand
      */
     protected function createMigration()
     {
-        dump('create--mi');
         $table = Str::snake(Str::pluralStudly(class_basename($this->argument('name'))));
         
         if ($this->option('pivot')) {

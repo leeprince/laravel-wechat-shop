@@ -29,7 +29,8 @@ class MemberServiceProvider extends ServiceProvider
     ];
     
     /*
-     * 自定义 Artisan 命令，包含以下功能
+     * 自定义 Artisan 命令
+     *  InstallCommand 包含以下功能：
      *      1. 执行数据库迁移功能：php artisan migrate(同样数据填充一样可以包含)
      *      2. 发布配置文件
      * 注意命名空间最前面含有 \
