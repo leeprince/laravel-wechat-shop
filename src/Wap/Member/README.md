@@ -1,4 +1,4 @@
-<h1 align="center"> laravel-wechat-shop-member </h1>
+<h1 align="center"> laravel-wechat-shop-wap-member </h1>
 
 <p align="center"> 微信公众号商店组件中的子组件 - 用户.</p>
 
